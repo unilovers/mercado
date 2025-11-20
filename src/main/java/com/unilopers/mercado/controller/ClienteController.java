@@ -1,4 +1,4 @@
 package com.unilopers.mercado.controller;
 
-public class UserController {
+public class ClienteController {
 }
