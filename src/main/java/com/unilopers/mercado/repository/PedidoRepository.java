@@ -1,4 +1,7 @@
 package com.unilopers.mercado.repository;
 
-public class PedidoRepository {
+import com.unilopers.mercado.model.Pedido;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 }
