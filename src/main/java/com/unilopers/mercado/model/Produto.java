@@ -1,19 +1,48 @@
 package com.unilopers.mercado.model;
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "produto")
 public class Produto {
-    private int idProduto;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idProduto;
+
+    @Column(name = "nome_produto", nullable = false)
     private String nomeProduto;
+
+    @Column(name = "preco_produto", nullable = false)
     private double precoProduto;
+
+    @Column(name = "quantidade_estoque", nullable = false)
     private int quantidadeEstoque;
-    private Date validade;
+
+    @Column(name = "validade", nullable = false)
+    private LocalDate validade;
+
+    @Column(name = "fk_categoria", nullable = false)
     private int idCategoria;
 
-    public int getIdProduto() {
+
+
+    public Produto(){}
+
+    public Produto(String nomeProduto, Double precoProduto, int quantidadeEstoque, LocalDate validade, int idCategoria){
+        this.nomeProduto = nomeProduto;
+        this.precoProduto = precoProduto;
+        this.quantidadeEstoque = quantidadeEstoque;
+        this.validade = validade;
+        this.idCategoria = idCategoria;
+    }
+
+    public Long getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto) {
+    public void setIdProduto(Long idProduto) {
         this.idProduto = idProduto;
     }
 
@@ -41,11 +70,11 @@ public class Produto {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public Date getValidade() {
+    public LocalDate getValidade() {
         return validade;
     }
 
-    public void setValidade(Date validade) {
+    public void setValidade(LocalDate validade) {
         this.validade = validade;
     }
 
