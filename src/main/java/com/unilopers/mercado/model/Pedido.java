@@ -31,6 +31,54 @@ public class Pedido {
       @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<Item_pedido> itens;
 
+
+ public Long getIdPedido() {
+  return idPedido;
+ }
+
+ public void setIdPedido(Long idPedido) {
+  this.idPedido = idPedido;
+ }
+
+ public double getPrecoTotal() {
+  return precoTotal;
+ }
+
+ public void setPrecoTotal(double precoTotal) {
+  this.precoTotal = precoTotal;
+ }
+
+ public String getTipoPagamento() {
+  return tipoPagamento;
+ }
+
+ public void setTipoPagamento(String tipoPagamento) {
+  this.tipoPagamento = tipoPagamento;
+ }
+
+ public boolean isPago() {
+  return pago;
+ }
+
+ public void setPago(boolean pago) {
+  this.pago = pago;
+ }
+
+ public Cliente getCliente() {
+  return cliente;
+ }
+
+ public void setCliente(Cliente cliente) {
+  this.cliente = cliente;
+ }
+
+ public List<Item_pedido> getItens() {
+  return itens;
+ }
+
+ public void setItens(List<Item_pedido> itens) {
+  this.itens = itens;
+ }
 }
 
 
