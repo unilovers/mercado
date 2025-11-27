@@ -1,8 +1,10 @@
 package com.unilopers.mercado.model;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 
+@Data
 @Entity
 @Table(name = "produto")
 public class Produto {
@@ -28,61 +30,5 @@ public class Produto {
 
 
 
-    public Produto(){}
 
-    public Produto(String nomeProduto, Double precoProduto, int quantidadeEstoque, LocalDate validade, Long idCategoria){
-        this.nomeProduto = nomeProduto;
-        this.precoProduto = precoProduto;
-        this.quantidadeEstoque = quantidadeEstoque;
-        this.validade = validade;
-        this.idCategoria = idCategoria;
-    }
-
-    public Long getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(Long idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
-    }
-
-    public double getPrecoProduto() {
-        return precoProduto;
-    }
-
-    public void setPrecoProduto(double precoProduto) {
-        this.precoProduto = precoProduto;
-    }
-
-    public int getQuantidadeEstoque() {
-        return quantidadeEstoque;
-    }
-
-    public void setQuantidadeEstoque(int quantidadeEstoque) {
-        this.quantidadeEstoque = quantidadeEstoque;
-    }
-
-    public LocalDate getValidade() {
-        return validade;
-    }
-
-    public void setValidade(LocalDate validade) {
-        this.validade = validade;
-    }
-
-    public Long getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Long idCategoria) {
-        this.idCategoria = idCategoria;
-    }
 }
