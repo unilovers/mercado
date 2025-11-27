@@ -24,13 +24,13 @@ public class Produto {
     private LocalDate validade;
 
     @Column(name = "fk_categoria", nullable = false)
-    private int idCategoria;
+    private Long idCategoria;
 
 
 
     public Produto(){}
 
-    public Produto(String nomeProduto, Double precoProduto, int quantidadeEstoque, LocalDate validade, int idCategoria){
+    public Produto(String nomeProduto, Double precoProduto, int quantidadeEstoque, LocalDate validade, Long idCategoria){
         this.nomeProduto = nomeProduto;
         this.precoProduto = precoProduto;
         this.quantidadeEstoque = quantidadeEstoque;
@@ -78,11 +78,11 @@ public class Produto {
         this.validade = validade;
     }
 
-    public int getIdCategoria() {
+    public Long getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
+    public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
     }
 }
