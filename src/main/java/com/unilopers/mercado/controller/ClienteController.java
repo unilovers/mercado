@@ -3,6 +3,7 @@ package com.unilopers.mercado.controller;
 import com.unilopers.mercado.model.Cliente;
 import com.unilopers.mercado.repository.ClienteRepository;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente create(@RequestBody Cliente cliente) {
+    public Cliente create(@Valid @RequestBody Cliente cliente) {
         return repo.save(cliente);
     }
 
@@ -32,7 +33,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public Cliente update(@PathVariable Long id, @RequestBody Cliente dados) {
+    public Cliente update(@PathVariable Long id, @Valid @RequestBody Cliente dados) {
         return repo.findById(id).map(u -> {
             u.setNome(dados.getNome());
             u.setEmail(dados.getEmail());
