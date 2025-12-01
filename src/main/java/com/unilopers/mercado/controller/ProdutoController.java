@@ -5,12 +5,9 @@ import com.unilopers.mercado.model.Produto;
 import com.unilopers.mercado.repository.CategoriaRepository;
 import com.unilopers.mercado.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -68,7 +65,7 @@ public class ProdutoController {
                 throw new Exception("A quantidade em estoque do produto não pode ser negativa.");
             }
 
-            Optional<Categoria> idCategoria = categoriaRepository.findById(produto.getIdCategoria());
+            Optional<Categoria> idCategoria = categoriaRepository.findById(produto.getCategoria().getId());
             if (idCategoria.isEmpty()){
                 throw new Exception("Categoria selecionada não existe.");
             }
@@ -128,9 +125,14 @@ public class ProdutoController {
                 produto.setValidade(produtoAtual.getValidade());
             }
 
-            Optional<Categoria> idCategoria = categoriaRepository.findById(produto.getIdCategoria());
+            if (produtoAtual.getCategoria() == null || produtoAtual.getCategoria().getId() == null) {
+                throw new Exception("A categoria do produto é obrigatória.");
+            }
+            Optional<Categoria> idCategoria = categoriaRepository.findById(produtoAtual.getCategoria().getId());
             if (idCategoria.isEmpty()){
                 throw new Exception("A categoria selecionada não existe.");
+            } else {
+                produto.setCategoria(idCategoria.get());
             }
 
             Produto saved = produtoRepository.save(produto);

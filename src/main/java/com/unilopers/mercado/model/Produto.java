@@ -25,10 +25,7 @@ public class Produto {
     @Column(name = "validade", nullable = false)
     private LocalDate validade;
 
-    @Column(name = "fk_categoria", nullable = false)
-    private Long idCategoria;
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoria;
 }
